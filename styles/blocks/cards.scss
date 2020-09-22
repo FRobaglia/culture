@@ -4,23 +4,26 @@
   justify-content: space-between;
   margin-bottom: 20px;
   width: 100%;
+
+  &::after {
+    content: " ";
+    display: block;
+    flex: 0 0 calc(33.33333% - 16px);
+  }
 }
 
 .card {
+  position: relative;
   background-color: $white;
   display: block;
   border-radius: 3px;
   padding: 12px;
   width: calc(33.333% - 16px);
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   transition: all 0.3s ease;
   border-top: 4px solid $blue;
   text-decoration: none;
-
-  &:nth-of-type(3n) {
-    margin-right: 0;
-  }
 
   &:hover {
     box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2);
@@ -63,5 +66,23 @@
 
   &:first-letter {
     text-transform: capitalize;
+  }
+}
+
+@media (max-width: 1280px) {
+  .card {
+    width: calc(50% - 12px);
+  }
+  .card-thumbnail {
+    width: 120px;
+  }
+}
+
+@media (max-width: 680px) {
+  .card {
+    width: 100%;
+  }
+  .card-thumbnail {
+    display: none;
   }
 }
