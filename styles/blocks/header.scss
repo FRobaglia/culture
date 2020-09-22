@@ -1,0 +1,30 @@
+header {
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px -2px gray;
+  padding: 20px;
+  margin-bottom: 36px;
+
+  a {
+    text-decoration: none;
+  }
+
+  .menu {
+    margin: 0 auto;
+    display: table;
+  }
+
+  .menu-items {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .menu-item {
+    margin-right: 40px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

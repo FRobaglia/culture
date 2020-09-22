@@ -1,0 +1,74 @@
+/* Config */
+@import "config/fonts";
+@import "config/variables";
+
+/* Vendors */
+@import "vendors/reset";
+
+/* Blocks */
+@import "blocks/header";
+@import "blocks/cards";
+
+/* body/html */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  color: $black;
+  background: #fff;
+  font-family: "Roboto";
+}
+
+/* Titles */
+
+h1 {
+  color: $black;
+  font-size: 80px;
+  font-weight: 900;
+  text-shadow: 3px 3px 0px $blue;
+  margin-bottom: 36px;
+}
+
+/* Other HTML tags */
+
+p {
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* Simple reusable blocks */
+
+// any content (except decorative) should be inside a .container as it defines layout
+.container {
+  max-width: $site-max-width;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  &.container-article {
+    max-width: $article-max-width;
+  }
+}
+
+// text classes
+.white-text {
+  color: $white;
+}
+.black-text {
+  color: $black;
+}
+.grey-text {
+  color: $grey;
+}
+.blue-text {
+  color: $blue;
+}
+.big-text {
+  font-size: 24px;
+}
+.small-text {
+  font-size: 12px;
+}
