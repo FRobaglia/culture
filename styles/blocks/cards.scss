@@ -2,25 +2,26 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  margin-bottom: 20px;
   width: 100%;
 
   &::after {
     content: " ";
     display: block;
-    flex: 0 0 calc(33.33333% - 16px);
+    flex: 0 0 calc(33.33333% - 24px);
   }
 }
 
 .card {
   position: relative;
   background-color: $white;
-  display: block;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
   border-radius: 3px;
   padding: 12px;
-  width: calc(33.333% - 16px);
+  width: calc(33.333% - 24px);
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-  margin-bottom: 24px;
+  margin-bottom: 36px;
   transition: all 0.3s ease;
   border-top: 4px solid $blue;
   text-decoration: none;
@@ -28,7 +29,7 @@
   &:hover {
     box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2);
     border-bottom: none;
-    transform: translateY(-4px);
+    transform: translateY(-6px);
   }
 }
 
@@ -37,11 +38,12 @@
   margin-left: 10px;
   object-fit: contain;
   border-radius: 3px;
-  width: 160px;
+  width: 140px;
   height: auto;
 }
 
 .card-title {
+  overflow-wrap: break-word;
   font-size: 32px;
   font-weight: bold;
 
@@ -49,11 +51,12 @@
     display: inline-block;
     font-size: 14px;
     font-weight: 300;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 }
 
 .card-creators {
+  line-height: 1.2;
   font-weight: 500;
   font-size: 16px;
   margin-bottom: 18px;
@@ -69,7 +72,7 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $large) {
   .card {
     width: calc(50% - 12px);
   }
@@ -78,11 +81,8 @@
   }
 }
 
-@media (max-width: 680px) {
+@media (max-width: $tablet) {
   .card {
     width: 100%;
-  }
-  .card-thumbnail {
-    display: none;
   }
 }

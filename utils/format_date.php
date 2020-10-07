@@ -44,11 +44,14 @@ function get_date_year($date) {
 /* Check if a date is between 2 dates */
 
 function date_in_range($start_date, $end_date, $date) {
+  
 
   // Convert to timestamp
   $start_ts = strtotime($start_date);
   $end_ts = strtotime($end_date);
   $user_ts = strtotime($date);
 
-  return (($user_ts >= $start_ts) && ($user_ts <= $end_ts));
+  $date_in_range = ($user_ts >= $start_ts) && ($user_ts <= $end_ts);
+
+  return $date_in_range;
 }

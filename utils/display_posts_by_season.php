@@ -16,8 +16,8 @@ function get_season($date) {
   $autumn_end_date = '1970-12-20';
   
   // Winter
-  $winter_start_date = '1970-12-21';
-  $winter_end_date = '1970-03-19';
+  $winter_start_date = '1969-12-21';
+  $winter_end_date = '1971-03-19';
   
   $real_date_year = get_date_year($date);
 
@@ -34,8 +34,9 @@ function get_season($date) {
     $season = 'Automne ';
   } else if (date_in_range($winter_start_date, $winter_end_date, $date)) {
     $season = 'Hiver ';
+    if (7000000 < strtotime($date) && strtotime($date) <= 31449600) $real_date_year++; // fix bugs for winter since it's in 2 different years
   }
-
+  
   $season .= $real_date_year;
 
   return $season;
@@ -89,13 +90,13 @@ function display_posts_by_seasons($category = 'films') {
   ?>
 
   <section>
-    <h1> <?php echo $current_season ?> </h1>
+    <h1> <?= $current_season ?> </h1>
     <div class="cards">
 
   <?php
 
   if (count($posts) === 0) : ?>
-  <a class="big-text" href="<?= admin_url( 'post-new.php'); ?>"> Ajouter un<?php echo ($feminin ? 'e' : '') ?> premi<?php echo ($feminin ? 'ère' : 'er') ?> <?= $art_word ?> pour voir vos <?= $art_word ?>s <?= $watched_word_plural ?></a>
+  <a class="big-text" href="<?= admin_url( 'post-new.php'); ?>"> Ajouter un<?= ($feminin ? 'e' : '') ?> premi<?= ($feminin ? 'ère' : 'er') ?> <?= $art_word ?> pour voir vos <?= $art_word ?>s <?= $watched_word_plural ?></a>
   <?php endif;
 
   foreach ($posts as $post) {
@@ -125,11 +126,15 @@ function display_posts_by_seasons($category = 'films') {
     <!-- Start card HTML -->
 
     <a href="<?= get_permalink($post) ?>" class="card card-movie">
-      <?= get_the_post_thumbnail($post, 'medium_large', ["class" => "card-thumbnail"]) ?>
-      <div class="card-title"> <?= get_the_title($post) ?> <span><?= $pods_fields['release_date'][0] ?> </span> </div>
-      <div class="card-creators"> De <?= $pods_fields['creator'][0] ?> </div>
-      <p class="card-excerpt"> <?= get_the_excerpt($post) ?> </p>
-      <span class="card-date"> <?= $watched_word ?> le <?= format_date($pods_fields['watched_date'][0]) ?> </span>
+      <div class="card-content">
+        <?= get_the_post_thumbnail($post, 'medium_large', ["class" => "card-thumbnail"]) ?>
+        <div class="card-title"> <?= get_the_title($post) ?> <span><?= $pods_fields['release_date'][0] ?> </span> </div>
+        <div class="card-creators"> De <?= $pods_fields['creator'][0] ?> </div>
+        <p class="card-excerpt"> <?= get_the_excerpt($post) ?> </p>
+      </div>
+      <div class="card-footer">
+        <span class="card-date"> <?= $watched_word ?> le <?= format_date($pods_fields['watched_date'][0]) ?> </span>
+      </div>
     </a>
 
     <!-- End card HTML -->
