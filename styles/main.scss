@@ -49,12 +49,12 @@ section {
 
 // any content (except decorative) should be inside a .container as it defines layout
 .container {
-  max-width: $site-max-width;
-  margin: 0 auto;
-  padding: 0 24px;
+  width: calc(100% - 24px);
+  margin: 0 12px 48px 12px;
+  padding: 0 12px;
 
   &.container-article {
-    max-width: $article-max-width;
+    border-left: 5px solid $blue;
   }
 }
 
@@ -62,8 +62,16 @@ section {
   h1 {
     font-size: 68px;
   }
-  .container {
+  .container,
+  .container-article {
+    width: auto;
+    margin: 0 auto 60px auto;
     padding: 0 40px;
+    max-width: $site-max-width;
+
+    &.container-article {
+      max-width: $article-max-width;
+    }
   }
 }
 
@@ -73,10 +81,16 @@ section {
   }
   .container {
     padding: 0 60px;
+    margin-bottom: 80px;
+
+    &.container-article {
+      padding: 0 60px;
+    }
   }
 }
 
 // text classes
+
 .white-text {
   color: $white;
 }
